@@ -1,0 +1,28 @@
+
+public class Mail_Login_Register {
+	public WebDriver driver;
+	@BeforeClass
+	public static void setUpBeforeClass() throws Exception {
+		System.out.println("Started");
+System.setProperty("webdriver.chrome.driver", "D:\\Library\\chromedriver.exe");	
+	}
+	@AfterClass
+	public static void tearDownAfterClass() throws Exception {
+		System.out.println("Ended");
+	}
+	@Before //Pre condition
+	public void setUp() throws Exception {		
+		driver=new ChromeDriver();
+		driver.get("http://mail.in.com");
+	}
+	@After //Post condition
+	public void tearDown() throws Exception {
+		driver.quit();
+	}
+	@Test
+	public void verifyLogin() throws Exception{
+		driver.findElement(By.id("f_id")).sendKeys("jan30selenium");
+		driver.findElement(By.id("f_pwd")).sendKeys("selenium1");
+		driver.findElement(By.cssSelector("input.signin")).click();
+		Thread.sleep(3000);		
+	}
